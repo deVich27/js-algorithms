@@ -1,6 +1,6 @@
 function isMore(a,b) {
   if(typeof a!=='string' || typeof b!=='string'){
-    throw new TypeError('Аргументы должны быть строками')  
+    throw new TypeError('Оба аргумента должны быть строками')  
   }
   return a>b 
 }
