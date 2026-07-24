@@ -1,17 +1,20 @@
-import {len} from './len.js'
+/**
+ * Проверяет, больше или равна ли первая строка второй.
+ *
+ * @param {string} firstString - Первая строка.
+ * @param {string} secondString - Вторая строка.
+ * @returns {boolean} true, если первая строка больше или равна второй, иначе false.
+ * @throws {TypeError} Если аргументы не являются строками.
+ *
+ * @example
+ * isMoreOrEqual('b', 'a') // true
+ * isMoreOrEqual('a', 'a') // true
+ * isMoreOrEqual('a', 'b') // false
+ */
+import { isEqual } from "./is-equal.js"
+import { isMoreOrEqual } from './is-more-or-equal.js'
+import { len } from './len.js'
 function isLessOrEqual(firstString, secondString) {
- if (typeof firstString !== 'string' || typeof secondString !== 'string') {
-    throw new TypeError('Оба аргумента должны быть строками')
-  } 
-  const minLength = len(firstString) < len(secondString) ? len(firstString) : len(secondString); 
-  for(let i=0; i<minLength; i++){
-    if (firstString[i].charCodeAt(0)<secondString[i].charCodeAt(0)){
-      return true
-    }
-    if(firstString[i].charCodeAt(0)>secondString[i].charCodeAt(0)){
-      return false
-    }
-  } 
-  return len(firstString)<=len(secondString)
+  return !isMoreOrEqual(firstString, secondString) || isEqual(firstString, secondString)
 }
 export {isLessOrEqual}
