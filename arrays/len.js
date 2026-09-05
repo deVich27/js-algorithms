@@ -1,11 +1,29 @@
-export function len(arr){
-  if (!Array.isArray(arr)){ 
-    throw new TypeError ('Аргумент должен быть массивом')
+export function len(variable){
+  if (!Array.isArray(variable) && (typeof variable !== 'object' || variable === null)){ 
+    throw new TypeError ('Аргумент должен быть массивом или обьектом')
   }
+  
   let count = 0
-  for (const num of arr){
-    if (num === undefined) break
-    count++
+  
+  if (Array.isArray(variable)){
+    
+    for (const num of variable){
+      
+      count++
+    
+    }
+  
+  } 
+
+  else if (typeof variable === 'object') {
+    
+    for (const num in variable){
+      
+      count++
+    
+    }
+  
   }
+  
   return count
 }
